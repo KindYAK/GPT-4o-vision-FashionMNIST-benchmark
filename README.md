@@ -18,11 +18,16 @@ Your last line should always be a class label from the list above! If you are no
 ```
 
 ## Notes
-GPT-4o-mini declined to classify 30 of the images. They are presented in `bad_imgs` folder
-`results.csv` contains per-image classification results with LLM's reasoning
+GPT-4o-mini declined to classify 30 of the test images. They are presented in `bad_imgs` folder.
+`results.csv` contains per-image classification results with LLM's reasoning for the test set
+`results_train.csv` contains per-image classification results with LLM's reasoning for 
+a random sample of 1000 images from train set
 
 ## Results
+Fashion MNIST **test set**:
+
 Accuracy: 0.8085
+
 Classification Report:
 
               precision    recall  f1-score   support
@@ -42,3 +47,29 @@ Classification Report:
     mcr avg        0.82      0.81      0.81     10000
     wghtd avg      0.82      0.81      0.81     10000
 
+Fashion MNIST **train set**:
+
+Accuracy: 0.8000
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.67      0.71      0.69       110
+           1       0.99      1.00      1.00       101
+           2       0.69      0.90      0.78       110
+           3       0.71      0.92      0.80        84
+           4       0.91      0.50      0.65       100
+           5       0.97      0.88      0.92        89
+           6       0.53      0.52      0.52       112
+           7       0.81      0.96      0.88        92
+           8       0.99      0.85      0.91       101
+           9       0.96      0.84      0.89       101
+
+    accuracy                           0.80      1000
+    mcr avg        0.82      0.81      0.80      1000
+    wghtd avg      0.82      0.80      0.80      1000
+
+Results are very modest given simplicity of the dataset.
+
+There is no train-test discrepancy, which means that there is either no overfitting happening, or
+GPT-4o-mini was trained on both train and test sets.
